@@ -1,5 +1,6 @@
 // ...existing code...
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   // container style
@@ -8,7 +9,63 @@ const styles = StyleSheet.create({
   line: { marginBottom: 6 },
   // style for bold label text
   label: { fontWeight: '700' },
+  introRow: {
+    flexDirection: 'row',
+  },
+  statisticsRow: {
+    marginTop: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 4,
+    marginRight: 15,
+  },
+  descriptionFlex: {
+    flex: 1,
+  },
+  fullName: {
+    fontWeight: '700',
+    fontSize: 16,
+    marginBottom: 4,
+  },
+  description: {
+    color: '#586069',
+  },
+  languageTag: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#0366d6',
+    color: 'white',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+    overflow: 'hidden',
+    marginTop: 4,
+  },
+  statItem: {
+    alignItems: 'center',
+  },
+  statLabel: {
+    fontWeight: '700',
+    marginTop: 8,
+  },
+  statValue: {
+    color: '#586069',
+    textAlign: 'center',
+  },
 });
+
+
+const formatCountField = (count) => {
+  if (count >= 1000) {
+    return (count / 1000).toFixed(1) + 'k';
+  }
+  
+  return String(count);   
+};
+
 
 const RepositoryItem = ({ item }) => {
   if (!item) return null;
@@ -20,33 +77,41 @@ const RepositoryItem = ({ item }) => {
     forksCount, 
     stargazersCount, 
     ratingAverage, 
-    reviewCount
+    reviewCount,
+    ownerAvatarUrl
 } = item;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Full name: </Text>{fullName}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Description: </Text>{description}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Language: </Text>{language}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Stars: </Text>{stargazersCount}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Forks: </Text>{forksCount}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Reviews: </Text>{reviewCount}
-      </Text>
-      <Text style={styles.line}>
-        <Text style={styles.label}>Rating: </Text>{ratingAverage}
-      </Text>
+      <View style={styles.introRow}>
+        <Image source={{ uri: ownerAvatarUrl}} style={styles.avatar}></Image>
+        <View style={styles.descriptionFlex}>
+            <Text fontWeight='bold'>{fullName}</Text>
+            <Text fontSize='subheading'>{description}</Text>
+            <Text style={styles.languageTag}>{language}</Text>
+        </View>
+      </View>
+      
+      <View style={styles.statisticsRow}>
+        <View style={styles.statItem}>
+            <Text fontWeight='bold'>{formatCountField(stargazersCount)}</Text>
+            <Text fontSize='subheading'>Stars</Text>
+        </View>
+        <View style={styles.statItem}>
+            <Text fontWeight='bold'>{formatCountField(forksCount)}</Text>
+            <Text fontSize='subheading'>Forks</Text>
+        </View>
+        <View style={styles.statItem}>
+            <Text fontWeight='bold'>{formatCountField(reviewCount)}</Text>
+            <Text fontSize='subheading'>Reviews</Text>
+        </View>
+        <View style={styles.statItem}>
+            <Text fontWeight='bold'>{ratingAverage}</Text>
+            <Text fontSize='subheading'>Rating</Text>
+        </View>
+      </View>
     </View>
+    
   );
 };
 
