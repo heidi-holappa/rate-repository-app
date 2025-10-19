@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 const tabs = [
   { key: 'repos', label: 'Repositories' },
-
+  { key: 'signin', label: 'Sign In' },
 ];
 
 const AppBar = () => {
