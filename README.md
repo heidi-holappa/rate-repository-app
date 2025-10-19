@@ -6,7 +6,7 @@
 ## Exercises checklist
 
 - [x] Exercise 10.1
-- [ ] Exercise 10.2
+- [x] Exercise 10.2
 - [ ] Exercise 10.3
 - [ ] Exercise 10.4
 - [ ] Exercise 10.5
