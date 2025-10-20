@@ -2,6 +2,8 @@
 import { View, Image, StyleSheet } from 'react-native';
 import Text from './Text';
 
+import theme from '../theme';
+
 const styles = StyleSheet.create({
   // container style
   container: { padding: 15, backgroundColor: 'white' },
@@ -88,7 +90,7 @@ const RepositoryItem = ({ item }) => {
         <View style={styles.descriptionFlex}>
             <Text fontWeight='bold'>{fullName}</Text>
             <Text fontSize='subheading'>{description}</Text>
-            <Text style={styles.languageTag}>{language}</Text>
+            <Text style={theme.languageTag}>{language}</Text>
         </View>
       </View>
       
