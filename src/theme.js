@@ -49,6 +49,15 @@ const theme = {
     borderRadius: 4,
     marginTop: 12,
     backgroundColor: 'white',
+  },
+  inputFieldError: {
+    borderWidth: 1,
+    borderColor: '#d73a4a',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 4,
+    marginTop: 12,
+    backgroundColor: 'white',
   }
 };
 
