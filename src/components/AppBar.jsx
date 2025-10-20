@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
 });
 
 const tabs = [
-  { key: 'repos', label: 'Repositories' },
-  { key: 'signin', label: 'Sign In' },
+  { key: 'repos', label: 'Repositories', to: '/' },
+  { key: 'signin', label: 'Sign In', to: '/signin' },
 ];
 
 const AppBar = () => {
@@ -30,6 +30,7 @@ const AppBar = () => {
             <AppBarTab
               key={t.key}
               label={t.label}
+              to={t.to}
             />
           ))}
         </ScrollView>

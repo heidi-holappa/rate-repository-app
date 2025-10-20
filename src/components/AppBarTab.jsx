@@ -1,3 +1,4 @@
+import { Link } from 'react-router-native';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import theme from '../theme';
 
@@ -16,10 +17,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ label}) => (
-  <Pressable style={styles.tab}>
+const AppBarTab = ({ label, to }) => (
+  <Link to={to} underlayColor={"transparrent"} style={styles.tab}>
     <Text style={styles.label}>{label}</Text>
-  </Pressable>
+  </Link>
 );
 
 export default AppBarTab;
