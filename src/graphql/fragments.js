@@ -14,3 +14,10 @@ export const REPOSITORY_FIELDS = gql`
      url
   }
  `
+
+ export const USER_FIELDS = gql`
+   fragment UserFields on User {
+      id
+      username
+   }
+`
