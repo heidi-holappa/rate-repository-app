@@ -7,11 +7,9 @@ import RepositoryItem from './RepositoryItem';
 
 const ItemSeparator = () => <View />;
 
-const RepositoryList = () => {
-  const { repositories } = useRepositories();
-
+export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
+    ? repositories.edges.map((edge) => edge.node)
     : [];
 
   console.log('repository nodes:', repositoryNodes);
@@ -23,6 +21,12 @@ const RepositoryList = () => {
       renderItem={RepositoryItem}
     />
   );
+};
+
+const RepositoryList = () => {
+  const { repositories } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories} />;
 };
 
 export default RepositoryList;
