@@ -40,7 +40,7 @@ const validationSchema = yup.object().shape({
  *
  * @returns {JSX.Element} A React Native component rendering a username and password form.
  */
-const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues,
     validationSchema,
