@@ -9,7 +9,7 @@ import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
 import SortAndOrderBy from './SortAndOrderBy';
 
-
+import FilterRepositories from './FilterRepositories';
 
 const ItemSeparator = () => <View />;
 
@@ -45,12 +45,14 @@ export const RepositoryListContainer = ({ repositories }) => {
 
 const RepositoryList = () => {
   const [sortAndOrderBy, setSortAndOrderBy] = useState('CREATED_AT:DESC');
+  const [filterQuery, setFilterQuery] = useState('');
 
 
-  const { repositories } = useRepositories( { sortAndOrderBy: sortAndOrderBy } );
+  const { repositories } = useRepositories( { sortAndOrderBy: sortAndOrderBy, filterBy: filterQuery } );
 
   return (
     <>
+      <FilterRepositories filterQuery={filterQuery} setFilterQuery={setFilterQuery} />
       <SortAndOrderBy sortAndOrderBy={sortAndOrderBy} setSortAndOrderBy={setSortAndOrderBy} />
       <RepositoryListContainer repositories={repositories} />
     </>
