@@ -14,6 +14,7 @@ import { useQuery, useApolloClient } from '@apollo/client';
 import useAuthStorage from '../hooks/useAuthStorage';
 import { useNavigate } from 'react-router-native';
 
+import useMe from '../hooks/useMe';
 
 import { GET_ME } from '../graphql/queries';
 
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
  */
 const AppBar = () => {
   // Fetch current user data to determine authentication state
-  const { data } = useQuery(GET_ME, { fetchPolicy: 'cache-and-network' });
-  const isLoggedIn = Boolean(data?.me);
+  const { user, reviews } = useMe(includeReviews=false);
+  const isLoggedIn = Boolean(user);
 
   // Initialize authentication and Apollo Client utilities
   const authStorage = useAuthStorage();
@@ -84,6 +85,7 @@ const AppBar = () => {
           {isLoggedIn ? (
             <>
             <AppBarTab to="/review" label="Create a review" />
+            <AppBarTab to="/user/reviews" label="My Reviews" />
             <Pressable onPress={handleSignOut}>
               <Text style={styles.label}>Sign Out</Text>
             </Pressable>

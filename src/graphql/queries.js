@@ -33,12 +33,20 @@ export const GET_REPOSITORY = gql`
 
 
 export const GET_ME = gql`
-    query {
+    query getMe($includeReviews: Boolean = false) {
         me {
             ...UserFields
+            reviews @include(if: $includeReviews) {
+                edges {
+                    node {
+                        ...ReviewFields
+                    }
+                }
+            }
         }
     }
     ${USER_FIELDS}
+    ${REVIEW_FIELDS}
 `;
 
 
