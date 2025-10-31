@@ -1,5 +1,6 @@
 import { FlatList, View } from 'react-native';
 
+import Text from './Text';
 import useMe from '../hooks/useMe';
 import ReviewItem from './ReviewItem';
 
@@ -18,7 +19,7 @@ const UserReviews = () => {
             data={reviewNodes}
             ItemSeparatorComponent={() => <View />}            
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <ReviewItem review={item} />} />
+            renderItem={({ item }) => <ReviewItem review={item} isMyReviews={true} />} />
     );  
 };
 

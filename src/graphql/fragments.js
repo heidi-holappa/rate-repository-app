@@ -31,6 +31,10 @@ export const REVIEW_FIELDS = gql`
       user {
          ...UserFields
       }
+      repository {
+      ...RepositoryFields
+      }
    }
-   ${USER_FIELDS}
+   ${USER_FIELDS},
+   ${REPOSITORY_FIELDS}
 ` 
