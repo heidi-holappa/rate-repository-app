@@ -1,5 +1,6 @@
 // ...existing code...
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, Pressable } from 'react-native';
+import { openURL } from "expo-linking";
 import Text from './Text';
 
 import theme from '../theme';
@@ -18,6 +19,11 @@ const styles = StyleSheet.create({
     marginTop: 8,
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  buttonRow: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   avatar: {
     width: 48,
@@ -46,6 +52,24 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginTop: 4,
   },
+  openInGitHubButton: {
+    marginTop: 20,
+    backgroundColor: '#0366d6',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',    // center the button horizontally
+    // stretch to full width
+    width: '100%',
+  },
+  openInGitHubText: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 16,
+    textAlign: 'center',
+  },
   statItem: {
     alignItems: 'center',
   },
@@ -69,8 +93,7 @@ const formatCountField = (count) => {
 };
 
 
-const RepositoryItem = ({ item }) => {
-  if (!item) return null;
+const RepositoryItem = ({ repository, isSingleRepository }) => {
 
   const { 
     fullName, 
@@ -80,8 +103,10 @@ const RepositoryItem = ({ item }) => {
     stargazersCount, 
     ratingAverage, 
     reviewCount,
-    ownerAvatarUrl
-} = item;
+    ownerAvatarUrl,
+    url
+  } = repository;
+
 
   return (
     <View style={styles.container} testID="repositoryItem">
@@ -112,6 +137,13 @@ const RepositoryItem = ({ item }) => {
             <Text fontSize='subheading'>Rating</Text>
         </View>
       </View>
+      { isSingleRepository && (
+          <View style={styles.buttonRow}>
+            <Pressable onPress={() => openURL(url)} style={styles.openInGitHubButton}>
+              <Text style={styles.openInGitHubText}>Open in GitHub</Text>
+            </Pressable>
+          </View>
+        )}
     </View>
     
   );

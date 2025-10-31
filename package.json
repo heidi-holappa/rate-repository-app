@@ -18,13 +18,16 @@
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|react-router-native)"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ]
   },
   "dependencies": {
     "@apollo/client": "3.7.14",
     "@react-native-async-storage/async-storage": "1.23.1",
     "dotenv": "^17.2.3",
     "expo": "~51.0.14",
+    "expo-linking": "~6.3.1",
     "expo-status-bar": "~1.12.1",
     "formik": "^2.4.6",
     "graphql": "^16.8.1",
