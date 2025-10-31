@@ -80,10 +80,14 @@ const AppBar = () => {
         contentContainerStyle={{ alignItems: 'center', flexDirection: 'row' }}
         >
           <AppBarTab to="/" label="Repositories" />
+          
           {isLoggedIn ? (
+            <>
+            <AppBarTab to="/review" label="Create a review" />
             <Pressable onPress={handleSignOut}>
               <Text style={styles.label}>Sign Out</Text>
             </Pressable>
+            </>
             ) : (
             <AppBarTab to="/signin" label="Sign In" />
           )}
